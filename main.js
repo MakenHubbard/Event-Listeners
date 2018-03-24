@@ -72,12 +72,27 @@ const buildDomString = (studentArray) => {
     });
     printToDom(domString, "card-holder");
 }
-buildDomString(students);
 
-const allTheButtons = document.getElementsByClassName("card-button");
 
-for (let i = 0; i < allTheButtons.length; i++) {
-    allTheButtons[i].addEventListener('click', (e) => {
-        console.log('event!!!!!', e);
-    });
+//this is the variable for 
+
+
+const addAllEventListeners = () => {
+    const allTheButtons = document.getElementsByClassName("card-button");
+
+    for (let i = 0; i < allTheButtons.length; i++) {
+        allTheButtons[i].addEventListener('click', changeNameToGreen);
+    }
+};
+
+const changeNameToGreen = (e) => {
+    const nameOfStudent = e.target.parentNode.children[0];
+    nameOfStudent.classList.add('green');
+};
+
+const startApplication = () => {
+    buildDomString(students);
+    addAllEventListeners();
 }
+
+startApplication();
